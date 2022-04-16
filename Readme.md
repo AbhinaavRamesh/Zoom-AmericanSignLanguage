@@ -15,9 +15,8 @@
   - Instantly see the translation of ASL to English text.
 * ML-API for Speech to Text and Text to speech to facilitate end to end User Experience for the application
 
-## How To Use
 
-## Credits
+## References
 
 This software uses the following open source packages:
 
