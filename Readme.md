@@ -15,10 +15,16 @@
   - Instantly see the translation of ASL to English text.
 * ML-API for Speech to Text and Text to speech to facilitate end to end User Experience for the application
 
+## Presentation
+
+[Team14.pptx](https://github.com/gridsusc/mindspark-14-team/files/8500724/Team14.pptx)
+
+
+
+
+https://user-images.githubusercontent.com/47682907/163693212-b5d3c339-bf0a-4da2-9714-3b2b32cdf3ee.mp4
 
 ## References
-
-This software uses the following open source packages:
 
 - Word-level Deep Sign Language Recognition from Video: A New Large-scale Dataset and Methods Comparison -Dongxu Li, Cristian Rodriguez Opazo, Xin Yu, Hongdong Li, https://arxiv.org/abs/1910.11006
 - MS-ASL: A Large-Scale Data Set and Benchmark for Understanding American Sign Language, Hamid Vaezi Joze, Oscar Koller, https://export.arxiv.org/pdf/1812.01053
