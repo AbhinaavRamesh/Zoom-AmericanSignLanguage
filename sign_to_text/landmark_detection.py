@@ -84,18 +84,21 @@ def get_body_pose(frames):
     left_hand_key_point_map = { f"{k}_0": v for (k,v) in hand_key_point_map.items()}
     right_hand_key_point_map = { f"{k}_1": v for (k,v) in hand_key_point_map.items()}
     for frame in frames:
-        image = cv2.flip(frame, 1)
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        hand_result = hands.process(image)
-        left_hand_landmarks = hand_result.multi_hand_landmarks[0]
-        right_hand_landmarks = None
-        if len(hand_result.multi_hand_landmarks) > 1:
-            right_hand_landmarks = hand_result.multi_hand_landmarks[1]
-        if MessageToDict(hand_result.multi_handedness[0])["classification"][0]["label"] == "Right":
-            left_hand_landmarks,right_hand_landmarks = right_hand_landmarks,left_hand_landmarks
-        left_hand_results.append(left_hand_landmarks)
-        right_hand_results.append(right_hand_landmarks)
-        pose_results.append(pose.process(image).pose_landmarks)
+        try:
+            image = cv2.flip(frame, 1)
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            hand_result = hands.process(image)
+            left_hand_landmarks = hand_result.multi_hand_landmarks[0]
+            right_hand_landmarks = None
+            if len(hand_result.multi_hand_landmarks) > 1:
+                right_hand_landmarks = hand_result.multi_hand_landmarks[1]
+            if MessageToDict(hand_result.multi_handedness[0])["classification"][0]["label"] == "Right":
+                left_hand_landmarks,right_hand_landmarks = right_hand_landmarks,left_hand_landmarks
+            left_hand_results.append(left_hand_landmarks)
+            right_hand_results.append(right_hand_landmarks)
+            pose_results.append(pose.process(image).pose_landmarks)
+        except:
+            print(".", end="")
     final_dict = {}
     
     pose_dict = convert_to_dict(pose_results,pose_key_point_map)

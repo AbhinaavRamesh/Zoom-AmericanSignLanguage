@@ -3,11 +3,12 @@ import socket
 import struct
 from sign_to_text import get_label
 import traceback
+import os
 
 import cv2
 
 HOST = "0.0.0.0"
-PORT = 8089
+PORT = 8090
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print('Socket created')
@@ -15,7 +16,9 @@ print('Socket created')
 s.bind((HOST, PORT))
 print('Socket bind complete')
 s.listen(10)
-print('Socket now listening')
+
+
+
 
 conn, addr = s.accept()
 
@@ -43,15 +46,18 @@ while True:
     # Extract frame
     frame = pickle.loads(frame_data)
     frames.append(frame)
-    print(len(frames))
+    i = 0
     if len(frames) >= 10:
+        os.makedirs(f"test{i}", exist_ok=True)
+        i += 1
         try:
             label = get_label(frames)
-            print(label)
+            print("\n", label)
         except:
-            print("exception occured")
-            traceback.print_exc()
-        frames = frames[5:]
+            print("",end="")
+        for j,frame in enumerate(frames):
+            cv2.imwrite(f"test{i-1}/img{j}.jpg", frame)
+        frames = frames[8:]
         
     # Display
 

@@ -33,7 +33,9 @@ def sendText(text):
 
 Thread(target=listenForServer(useData)).start()
 
-handle_microphone(sendText)
+
+if __name__ == "__main__":
+    handle_microphone(sendText)
 
 
 
