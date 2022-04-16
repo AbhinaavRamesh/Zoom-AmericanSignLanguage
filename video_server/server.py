@@ -1,10 +1,12 @@
 import pickle
 import socket
 import struct
+from sign_to_text import get_label
+import traceback
 
 import cv2
 
-HOST = ''
+HOST = "0.0.0.0"
 PORT = 8089
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -20,6 +22,7 @@ conn, addr = s.accept()
 data = b'' ### CHANGED
 payload_size = struct.calcsize("L") ### CHANGED
 
+frames = []
 while True:
 
     # Retrieve message size
@@ -36,13 +39,21 @@ while True:
 
     frame_data = data[:msg_size]
     data = data[msg_size:]
-
+    
     # Extract frame
     frame = pickle.loads(frame_data)
-
+    frames.append(frame)
+    print(len(frames))
+    if len(frames) >= 10:
+        try:
+            label = get_label(frames)
+            print(label)
+        except:
+            print("exception occured")
+            traceback.print_exc()
+        frames = frames[5:]
+        
     # Display
-    cv2.imshow('frame', frame)
-    cv2.waitKey(113)
 
 #from tqdm import tqdm
 #import requests
