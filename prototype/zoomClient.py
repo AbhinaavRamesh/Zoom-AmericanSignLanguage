@@ -1,9 +1,6 @@
 import socket
 from threading import Thread
-
-from __future__ import division
-from .micro_stream import MicrophoneStream
-from google.cloud import speech
+from  audio_to_text import handle_microphone
 import sys
 import re
 
@@ -35,6 +32,8 @@ def sendText(text):
     clientsocket.send(text.encode())
 
 Thread(target=listenForServer(useData)).start()
+
+handle_microphone(sendText)
 
 
 

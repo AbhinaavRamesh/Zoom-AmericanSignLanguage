@@ -1,5 +1,4 @@
 
-from __future__ import division
 from .micro_stream import MicrophoneStream
 from google.cloud import speech
 import sys
@@ -74,7 +73,3 @@ def handle_microphone(callback):
 
         # Now, put the transcription responses to use.
         listen_print_loop(responses, callback)
-
-
-if __name__ == "__main__":
-    handle_microphone(print)
