@@ -3,7 +3,7 @@
   <br>
   <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/American_Sign_Language_ASL.svg/1200px-American_Sign_Language_ASL.svg.png" alt="ASL" width="200"></a>
   <br>
-Zoom ALS  <br>
+Zoom ASL  <br>
 </h1>
 
 <h4 align="center">Closed captions or Communication Access Real-Time Transcriber for Deaf and Hard-of-Hearing.</h4>
